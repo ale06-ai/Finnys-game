@@ -1,0 +1,66 @@
+FINNY - ANIMACIONES INTEGRADAS
+
+Abre project.godot en Godot 4.3 o posterior y ejecuta con F5.
+Descomprime el ZIP en una carpeta nueva para conservar tu copia anterior.
+
+CONTROLES
+WASD o flechas: mover a Finny.
+Espacio o Enter cerca del cliente que espera: hacer el show.
+E cerca de un cofre: depositar todo el dinero de Wallet, como antes.
+
+QUÉ CAMBIÓ
+Finny usa AnimatedSprite2D en lugar de la imagen estática y el balanceo por Tween.
+Camina a 10 FPS y hace su show a 8 FPS; al terminar vuelve a idle.
+La aceleración y el frenado se ajustan desde speed, acceleration y friction.
+Mientras hace el show se queda quieto para no interrumpir la actuación.
+
+Los clientes conservan llegada, espera, show y salida.
+Se eliminó la comprobación duplicada de pago y de paciencia agotada.
+Bruja: idle, caminar y aplausos durante el show.
+Esqueleto: idle, caminar, desarmarse y recomponerse cuando pierde la paciencia.
+Gólem/trol: idle, caminar, golpe al suelo y recuperación cuando pierde la paciencia.
+Estas reacciones son visuales: no se añadió daño, destrucción real ni gastos.
+Se mantienen el pago de 100 y la paciencia predeterminada de 10 segundos.
+
+Los cofres tienen apertura y cierre a 10 FPS, con una pausa de 0.3 segundos abiertos.
+El depósito sigue siendo inmediato. No se puede iniciar otra animación mientras se cierra.
+Se amplió el área de interacción para poder depositar sin atravesar la colisión.
+Se separó un poco los cofres de los bordes para que se vea la tapa abierta.
+Se corrigió el orden de los saldos iniciales en la UI.
+
+CAMBIAR EL CLIENTE
+La escena principal mantiene un solo cliente, igual que tu proyecto original.
+En scenes/main.tscn selecciona custumer_1 y cambia Customer Type:
+0 = Witch; 1 = Skeleton; 2 = Golem. El aspecto se aplica al ejecutar.
+Para verlo también en el editor, reemplaza esa instancia por witch.tscn,
+skeleton.tscn o golem.tscn de level/costumers y conserva su posición.
+No agregué una ronda ni un sistema de aparición de clientes nuevos.
+
+EDITAR LOS FOTOGRAMAS
+assets/animations contiene PNG transparentes con celdas de 256 x 256,
+y recursos .tres de SpriteFrames. Las filas originales se reorganizaron en
+una tira horizontal por personaje para facilitar los recortes.
+Selecciona AnimatedSprite2D y abre Sprite Frames para cambiar orden o FPS.
+Los recursos están guardados en archivos y se pueden editar sin ejecutar el juego.
+Finny incluye collect y deposit como animaciones adicionales preparadas;
+no están conectadas al juego. Deposit incluye el cofre dibujado en la hoja original,
+por eso no se reproduce encima de los cofres del nivel.
+La imagen grande del dragón con bastón se conserva como dragon_reference.jpg:
+es una ilustración, no una hoja de animaciones.
+
+Las imágenes de WhatsApp son JPEG: se quitó su fondo opaco y se alinearon los
+recortes. Su compresión original puede dejar pequeños bordes claros en algunos detalles.
+
+ARCHIVOS DE CÓDIGO MODIFICADOS
+scripts/player_01.gd
+scripts/custumer_1.gd
+scripts/chest.gd
+scripts/ui.gd
+También se actualizaron las escenas y se agregaron los recursos de animación.
+Se conservó economy.gd con las reglas de dinero originales.
+
+COMPROBADO
+Importación en Godot 4.3 sin errores de scripts.
+Aceleración/frenado, show completo, pago único al final, apertura y cierre de ambos
+cofres, saldos separados y salida por paciencia de los tres tipos de cliente.
+Revisión visual de la escena y de los recortes sobre fondo oscuro.

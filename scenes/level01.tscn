@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/fondo_Cueva1.png" id="1_miv2v"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8es24"]
+texture = ExtResource("1_miv2v")
+texture_region_size = Vector2i(2000, 1414)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7h4gp"]
+tile_size = Vector2i(2000, 1414)
+sources/0 = SubResource("TileSetAtlasSource_8es24")
+
+[node name="Level01" type="Node2D"]
+
+[node name="Ground" type="TileMapLayer" parent="."]
+scale = Vector2(0.6, 0.6)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_7h4gp")

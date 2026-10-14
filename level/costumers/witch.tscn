@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="PackedScene" path="res://level/costumers/custumer_1.tscn" id="1"]
+[ext_resource type="SpriteFrames" path="res://assets/animations/witch.tres" id="2"]
+[node name="witch" instance=ExtResource("1")]
+customer_type = 0
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2")
+animation = &"idle"
